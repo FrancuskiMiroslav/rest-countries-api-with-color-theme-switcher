@@ -3,33 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Gulp4 Starter</title>
+		<meta name="color-scheme" content="theme-light theme-dark" />
+		<title>CountriesAPI</title>
 		<link rel="stylesheet" href="app.css" />
 		<link
 			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+			integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+			crossorigin="anonymous"
 		/>
 	</head>
 	<body>
-		<header class="app">
-			<div class="header">
-				<h1 class="button">Magnifsicent Dog App</h1>
-				<div id="breed"></div>
-			</div>
-			<div class="slideshow" id="slideshow"></div>
+		<header class="header">
+			<h1 class="header__title">Where in the world?</h1>
+			<button class="header__btn button" id="toggleThemeBtn">Dark Mode</button>
 		</header>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				/// css unique timestamp
-				let uniqueNum = new Date().getTime();
-				let cssURL = `app.css?ver=${uniqueNum}`;
-				let cssElement = document.getElementById('css');
-				cssElement.setAttribute('rel', 'stylesheet');
-				cssElement.setAttribute('type', 'text/css');
-				cssElement.setAttribute('href', cssURL);
-			});
-		</script>
 		<script src="app.js"></script>
 	</body>
 </html>
