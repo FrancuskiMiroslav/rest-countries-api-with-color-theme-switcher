@@ -1,13 +1,16 @@
-$mainFont: 'Roboto', sans-serif;
-$secondaryFont: 'Gilroy', cursive;
+$mainFont: 'Nunito Sans', sans-serif;
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');
+$darkBlue: hsl(209, 23%, 22%); //  (Dark Mode Elements)
+$veryDarkBlueBg: hsl(207, 26%, 17%); // (Dark Mode Background)
+$veryDarkBlue: hsl(200, 15%, 8%); //  (Light Mode Text)
+$darkGray: hsl(0, 0%, 52%); // (Light Mode Input)
+$veryLightGray: hsl(0, 0%, 98%); // (Light Mode Background)
+$white: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
 
-$primaryClr: #253746;
-$secondaryClr: #47d7ac;
-$tertiaryClr: #fb637e;
+$primaryClr: $darkBlue;
+$secondaryClr: $darkGray;
 
 $showImage: true;
 $homeImage: url(../images/home-bg-min.jpg);

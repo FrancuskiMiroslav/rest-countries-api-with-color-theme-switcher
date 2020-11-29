@@ -1,1 +1,24 @@
+.theme-light {
+	--primaryClr: #{$veryLightGray};
+	--secondaryClr: #{$white};
+	--accentClr: #{$darkGray};
+	--fontClr: #{$veryDarkBlue};
+}
+.theme-dark {
+	--primaryClr: #{$veryDarkBlueBg};
+	--secondaryClr: #{$darkBlue};
+	--accentClr: #{$white};
+	--fontClr: #{$white};
+}
 
+.header {
+	@include wrapper(1350, 30);
+	min-height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__title {
+		color: var(--fontClr);
+	}
+}
