@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+	const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+
 	// function to set a given theme/color-scheme
 	function setTheme(themeName) {
 		localStorage.setItem('theme', themeName);
@@ -9,8 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	function toggleTheme() {
 		if (localStorage.getItem('theme') === 'theme-dark') {
 			setTheme('theme-light');
+			toggleThemeBtn.innerText = 'Dark Mode';
 		} else {
 			setTheme('theme-dark');
+			toggleThemeBtn.innerText = 'Light Mode';
 		}
 	}
 
@@ -18,8 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	(function () {
 		if (localStorage.getItem('theme') === 'theme-dark') {
 			setTheme('theme-dark');
+			toggleThemeBtn.innerText = 'Light Mode';
 		} else {
 			setTheme('theme-light');
+			toggleThemeBtn.innerText = 'Dark Mode';
 		}
 	})();
+
+	toggleThemeBtn.addEventListener('click', (e) => {
+		toggleTheme();
+	});
 });

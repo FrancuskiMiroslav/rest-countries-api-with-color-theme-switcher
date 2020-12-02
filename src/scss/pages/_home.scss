@@ -3,6 +3,12 @@
 	--secondaryClr: #{$white};
 	--accentClr: #{$darkGray};
 	--fontClr: #{$veryDarkBlue};
+
+	.button {
+		&:before {
+			content: '\f186';
+		}
+	}
 }
 .theme-dark {
 	--primaryClr: #{$veryDarkBlueBg};
@@ -11,14 +17,36 @@
 	--fontClr: #{$white};
 }
 
-.header {
-	@include wrapper(1350, 30);
-	min-height: 80px;
+body {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+}
+
+.header {
+	min-height: 80px;
+	background-color: var(--secondaryClr);
+	display: flex;
+	justify-content: center;
 	align-items: center;
+	transition: 0.5s all ease-in-out;
+	box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+	z-index: 10;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		@include wrapper(1350, 30);
+	}
 
 	&__title {
 		color: var(--fontClr);
 	}
+}
+
+.main {
+	background-color: var(--primaryClr);
+	height: calc(100vh - 80px);
+	z-index: -10;
 }
