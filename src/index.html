@@ -23,7 +23,28 @@
 			</div>
 		</header>
 
-		<main class="main"></main>
+		<main class="main">
+			<div class="main__wrapper">
+				<section class="search">
+					<div class="search__group">
+						<button type="submit" class="search__btn">
+							<i class="fa fa-search"></i>
+						</button>
+						<input
+							type="search"
+							class="search__text"
+							placeholder="Search for a country"
+						/>
+					</div>
+
+					<select name="countries" id="countries" class="search__region">
+						<option value="all">Filter by Region</option>
+						<option value="france">france</option>
+						<option value="uk">UK</option>
+					</select>
+				</section>
+			</div>
+		</main>
 
 		<script src="app.js"></script>
 	</body>

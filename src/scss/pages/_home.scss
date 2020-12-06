@@ -48,5 +48,57 @@ body {
 .main {
 	background-color: var(--primaryClr);
 	height: calc(100vh - 80px);
-	z-index: -10;
+	width: 100%;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		@include wrapper(1350, 30);
+		padding: 50px 30px;
+	}
+
+	.search {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		position: relative;
+
+		&__text,
+		&__region {
+			height: 60px;
+			padding: 20px;
+			border: none;
+			box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+		}
+
+		&__group {
+			width: 35%;
+			position: relative;
+			color: var(--accentClr);
+		}
+
+		&__text {
+			padding-left: 40px;
+		}
+
+		&__btn {
+			position: absolute;
+			left: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			outline: none;
+			border: none;
+			background-color: transparent;
+			color: var(--accentClr);
+			cursor: pointer;
+		}
+
+		&__region {
+			width: 15%;
+			cursor: pointer;
+		}
+	}
 }
