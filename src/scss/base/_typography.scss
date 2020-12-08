@@ -1,5 +1,9 @@
 html {
 	font-family: $mainFont, Verdana, Geneva, Tahoma, sans-serif;
+
+	h1 {
+		@include fluid-typo(375px, 1440px, 12px, 36px);
+	}
 }
 
 @font-face {
