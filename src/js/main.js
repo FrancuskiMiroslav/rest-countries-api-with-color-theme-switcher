@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		countriesContainer.innerHTML = countriesList
 			.map((country) => {
-				console.log(country);
-
 				const { name, population, region, capital, flag } = country;
 
 				return `
@@ -89,4 +87,26 @@ document.addEventListener('DOMContentLoaded', function () {
 	(function () {
 		displayCountriesNumbers();
 	})();
+
+	let searchInput = document.getElementById('searchInput');
+
+	searchInput.addEventListener('keydown', (e) => {
+		console.log(searchInput.value);
+		filterSearch();
+	});
+
+	function filterSearch() {
+		let inputValue = searchInput.value.toUpperCase();
+		const countries = document.querySelectorAll('.box');
+
+		countries.forEach((country) => {
+			countryName = country.getElementsByTagName('h3')[0].innerText;
+
+			if (countryName.toUpperCase().indexOf(inputValue) > -1) {
+				country.style.display = '';
+			} else {
+				country.style.display = 'none';
+			}
+		});
+	}
 });
