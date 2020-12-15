@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				return `
 					<div class="box">
 						<div class="box__top">
-							<img src="${flag}" alt="flag of a ${name}" />
+							<img src="${flag}" loading="lazy" alt="flag of a ${name}" />
 						</div>
 
 						<div class="box__bottom">
@@ -90,20 +90,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	let searchInput = document.getElementById('searchInput');
 
-	searchInput.addEventListener('keydown', (e) => {
-		console.log(searchInput.value);
-		filterSearch();
-	});
+	searchInput.addEventListener('input', filterSearch);
 
-	function filterSearch() {
-		let inputValue = searchInput.value.toUpperCase();
+	function filterSearch(e) {
+		let inputValue = e.target.value.toUpperCase();
 		const countries = document.querySelectorAll('.box');
 
 		countries.forEach((country) => {
-			countryName = country.getElementsByTagName('h3')[0].innerText;
+			countryName = country
+				.getElementsByTagName('h3')[0]
+				.innerText.toUpperCase();
 
-			if (countryName.toUpperCase().indexOf(inputValue) > -1) {
-				country.style.display = '';
+			if (countryName.indexOf(inputValue) > -1) {
+				country.style.display = 'flex';
 			} else {
 				country.style.display = 'none';
 			}
