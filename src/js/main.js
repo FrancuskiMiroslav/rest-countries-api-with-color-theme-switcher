@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const { name, population, region, capital, flag } = country;
 
 				return `
-					<div class="box">
+					<div class="box active">
 						<div class="box__top">
 							<img src="${flag}" loading="lazy" alt="flag of a ${name}" />
 						</div>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 									${population}
 								</li>
 								<li class="box__info-list-item">
-									<span class="box__info-list-item--bold">Region:</span> ${region}
+									<span class="box__info-list-item--bold">Region:</span> <b>${region}</b> 
 								</li>
 								<li class="box__info-list-item">
 									<span class="box__info-list-item--bold">Capitol:</span> ${capital}
@@ -101,11 +101,38 @@ document.addEventListener('DOMContentLoaded', function () {
 				.getElementsByTagName('h3')[0]
 				.innerText.toUpperCase();
 
-			if (countryName.indexOf(inputValue) > -1) {
+			if (
+				country.classList.contains('active') &&
+				countryName.indexOf(inputValue) > -1
+			) {
 				country.style.display = 'flex';
 			} else {
 				country.style.display = 'none';
 			}
 		});
 	}
+
+	const regionSelect = document.getElementById('region');
+
+	regionSelect.addEventListener('change', (e) => {
+		const region = e.currentTarget.value.toUpperCase();
+		const countries = document.querySelectorAll('.box');
+
+		countries.forEach((country) => {
+			countryRegion = country
+				.getElementsByTagName('b')[0]
+				.innerText.toUpperCase();
+
+			if (countryRegion.indexOf(region) > -1) {
+				country.style.display = 'flex';
+				country.classList.add('active');
+			} else if (region === 'ALL') {
+				country.style.display = 'flex';
+				country.classList.add('active');
+			} else {
+				country.style.display = 'none';
+				country.classList.remove('active');
+			}
+		});
+	});
 });
