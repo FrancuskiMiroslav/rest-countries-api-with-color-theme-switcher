@@ -87,7 +87,11 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		max-height: 148px;
+		max-height: 190px;
+
+		@include breakpoint-max(600) {
+			max-height: max-content;
+		}
 
 		&-item {
 			color: var(--fontClr);
@@ -98,6 +102,8 @@
 	&__right-bottom {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
+		padding-bottom: 40px;
 
 		&--text {
 			color: var(--fontClr);
@@ -105,7 +111,9 @@
 
 		&-btn {
 			@extend %modal-btn;
-			margin-bottom: 0;
+			margin-bottom: 10px;
+			padding: 10px 20px;
+			font-size: 12px;
 		}
 
 		& * {

@@ -17,10 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	const headerContainer = document.getElementById('header');
+
 	window.addEventListener('scroll', (e) => {
 		if (document.documentElement.scrollTop > 0) {
+			headerContainer.classList.add('sticky');
 			btnScrollToTop.style.opacity = 1;
 		} else {
+			headerContainer.classList.remove('sticky');
 			btnScrollToTop.style.opacity = 0;
 		}
 	});
@@ -91,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				topLevelDomain,
 				currencies,
 				languages,
+				borders,
 			} = country;
 
 			let countryEl = document.createElement('div');
@@ -125,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const modalContainer = document.getElementById('modal-container');
 
 				modalContainer.style.display = 'flex';
+				btnScrollToTop.style.opacity = 0;
 
 				modalContainer.innerHTML = `
 				<div class="modal">
@@ -178,29 +184,36 @@ document.addEventListener('DOMContentLoaded', function () {
 										<strong>Top Level Domain:</strong> <span>${topLevelDomain}</span>
 									</li>
 									<li class="modal__right-list-item">
-										<strong>Currencies:</strong> <span>${currencies}</span>
+										<strong>Currencies:</strong> <span>${currencies.map((cur) => {
+											return cur.name;
+										})}</span>
 									</li>
 									<li class="modal__right-list-item">
-										<strong>Languages:</strong> <span>${languages}</span>
+										<strong>Languages:</strong> <span>${languages.map((lang) => {
+											return lang.name;
+										})}</span>
 									</li>
 								</ul>
 								<div class="modal__right-bottom">
 									<p class="modal__right-bottom--text">
 										<strong>Border countries:</strong>
 									</p>
-									<button class="modal__right-bottom-btn">France</button>
+									${borders
+										.map((border) => {
+											return `<button class="modal__right-bottom-btn">${border}</button>`;
+										})
+										.join('')}
+									
 								</div>
 							</div>
 						</div>
 					</div>
 				`;
-				/* if (modalContainer.style.display === '') {
-					document.body.style.overflowY = 'scroll';
+
+				if (modalContainer.style.display === 'flex') {
+					document.body.style.overflow = 'hidden';
 					modalContainer.style.display = 'flex';
-				} else if (modalContainer.style.display === 'flex') {
-					document.body.style.overflowY = 'hidden';
-					modalContainer.style.display = '';
-				} */
+				}
 
 				const modalBackBtn = document.getElementById('close-modal');
 				modalBackBtn.addEventListener('click', (e) => {

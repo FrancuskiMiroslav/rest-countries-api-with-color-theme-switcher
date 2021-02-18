@@ -1,0 +1,28 @@
+.header {
+	min-height: 80px;
+	background-color: var(--secondaryClr);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s all ease-in-out;
+	box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+	z-index: 100;
+	width: 100%;
+	position: fixed;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		@include wrapper(1350, 30);
+	}
+
+	&__title {
+		color: var(--fontClr);
+	}
+
+	&__btn {
+		@include fluid-typo(375px, 1440px, 10px, 16px);
+	}
+}
