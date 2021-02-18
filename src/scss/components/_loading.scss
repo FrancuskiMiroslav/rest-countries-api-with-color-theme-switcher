@@ -1,0 +1,17 @@
+.preload {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba($color: #000000, $alpha: 0.85);
+	z-index: 5000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease-in-out all;
+
+	&.preload-finished {
+		opacity: 0;
+		pointer-events: none;
+	}
+}

@@ -14,6 +14,23 @@
 		/>
 	</head>
 	<body>
+		<div class="preload">
+			<img src="./assets/images/preloader.gif" alt="loading-image" />
+		</div>
+
+		<button class="scrollTopBtn" id="btnScrollToTop">
+			<svg
+				class="scrollTopBtn__svg"
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+			>
+				<path d="M24 12l-12-9v5h-12v8h12v5l12-9z" />
+			</svg>
+		</button>
+
 		<header class="header">
 			<div class="header__wrapper">
 				<h1 class="header__title">Where in the world?</h1>
@@ -39,7 +56,8 @@
 					</div>
 
 					<select name="countries" id="region" class="search__region">
-						<option value="all">Filter by Region</option>
+						<option value="" disabled selected hidden>Filter by Region</option>
+						<option value="all">All</option>
 						<option value="Africa">Africa</option>
 						<option value="Americas">Americas</option>
 						<option value="Asia">Asia</option>
@@ -49,6 +67,7 @@
 				</section>
 
 				<section class="boxes" id="countriesContainer">
+					<h1 class="boxes__heading">Loading data...</h1>
 					<!-- <div class="box">
 						<div class="box__top">
 							<img src="assets/images/est.svg" alt="flag of a country" />
@@ -70,6 +89,75 @@
 							</ul>
 						</div>
 					</div> -->
+				</section>
+
+				<section class="modal-container" id="modal-container">
+					<div class="modal">
+						<div class="modal__header">
+							<button class="modal__btn" id="close-modal">
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									data-prefix="fas"
+									data-icon="arrow-left"
+									class="svg-inline--fa fa-arrow-left fa-w-14"
+									role="img"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512"
+								>
+									<path
+										fill="currentColor"
+										d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+									></path></svg
+								><span>Back</span>
+							</button>
+						</div>
+
+						<div class="modal__container">
+							<div class="modal__left">
+								<img
+									src="./assets/images/est.svg"
+									loading="lazy"
+									alt="flag of a ${name}"
+								/>
+							</div>
+							<div class="modal__right">
+								<h2 class="modal__right-title">Country</h2>
+								<ul class="modal__right-list">
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+									<li class="modal__right-list-item">
+										<strong>nMAE</strong> <span>germany</span>
+									</li>
+								</ul>
+								<div class="modal__right-bottom">
+									<p class="modal__right-bottom--text">
+										<strong>Border countries:</strong>
+									</p>
+									<button class="modal__right-bottom-btn">France</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</section>
 			</div>
 		</main>

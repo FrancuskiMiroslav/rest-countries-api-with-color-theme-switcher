@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
+	window.addEventListener('load', (e) => {
+		const preload = document.querySelector('.preload');
+
+		preload.classList.add('preload-finished');
+	});
+
+	const btnScrollToTop = document.getElementById('btnScrollToTop');
+
+	if (btnScrollToTop) {
+		btnScrollToTop.addEventListener('click', (e) => {
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth',
+			});
+		});
+	}
+
+	window.addEventListener('scroll', (e) => {
+		if (document.documentElement.scrollTop > 0) {
+			btnScrollToTop.style.opacity = 1;
+		} else {
+			btnScrollToTop.style.opacity = 0;
+		}
+	});
+
 	const toggleThemeBtn = document.getElementById('toggleThemeBtn');
 
 	// function to set a given theme/color-scheme
@@ -118,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		const region = e.currentTarget.value.toUpperCase();
 		const countries = document.querySelectorAll('.box');
 
+		searchInput.value = '';
+
 		countries.forEach((country) => {
 			countryRegion = country
 				.getElementsByTagName('b')[0]
@@ -134,5 +162,21 @@ document.addEventListener('DOMContentLoaded', function () {
 				country.classList.remove('active');
 			}
 		});
+	});
+
+	const modalContainer = document.getElementById('modal-container');
+	const modalBackBtn = document.getElementById('close-modal');
+
+	console.log(modalContainer.style.display == 'none');
+
+	/* if (modalContainer.style.display !== 'none') {
+		document.body.style.overflowY = 'scroll';
+	} else {
+		document.body.style.overflowY = 'hidden';
+	} */
+
+	modalBackBtn.addEventListener('click', (e) => {
+		modalContainer.style.display = 'none';
+		document.body.style.overflow = 'scroll';
 	});
 });

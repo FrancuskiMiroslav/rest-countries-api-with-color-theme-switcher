@@ -31,7 +31,8 @@ body {
 	align-items: center;
 	transition: 0.5s all ease-in-out;
 	box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
-	z-index: 10;
+	z-index: 100;
+	position: relative;
 
 	&__wrapper {
 		display: flex;
@@ -136,6 +137,10 @@ body {
 
 		@include breakpoint-max(500) {
 			padding: 0 20px;
+		}
+
+		&__heading {
+			color: var(--fontClr);
 		}
 	}
 

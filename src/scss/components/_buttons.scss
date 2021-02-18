@@ -11,7 +11,7 @@
 	text-align: center;
 	position: relative;
 	outline: none;
-	transition: all 0.1s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	cursor: pointer;
 	position: relative;
 
@@ -29,10 +29,63 @@
 	&:hover {
 		text-decoration: none;
 		color: var(--accentClr);
-		border: 1px solid var(--accentClr);
+		outline: none;
 	}
 
 	&:active {
 		background-color: rgba($color: var(--accentClr), $alpha: 1.1);
+	}
+}
+
+%modal-btn {
+	outline: none;
+	background-color: var(--primaryClr);
+	display: flex;
+	align-items: center;
+	padding: 12px 38px;
+	cursor: pointer;
+	color: var(--fontClr);
+	box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	border: none;
+	margin-bottom: 50px;
+	transition: 0.5s linear all;
+}
+
+.scrollTopBtn {
+	position: fixed;
+	font-size: 18px;
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	outline: none;
+	border: none;
+	background-color: var(--fontClr);
+	right: 0px;
+	bottom: 10px;
+	z-index: 5000;
+	opacity: 0;
+	transition: 0.5s ease all;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		background-color: var(--secondaryClr);
+
+		svg {
+			path {
+				fill: var(--fontClr);
+			}
+		}
+	}
+
+	&__svg {
+		transform: rotate(-90deg) scale(0.8);
+		width: 30px;
+		height: 30px;
+
+		path {
+			fill: var(--secondaryClr);
+		}
 	}
 }

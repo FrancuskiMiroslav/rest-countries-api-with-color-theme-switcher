@@ -1,0 +1,115 @@
+.modal-container {
+	position: fixed;
+	top: 10px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: var(--primaryClr);
+	z-index: 50;
+	display: none;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.modal {
+	@include wrapper(1350, 30);
+	width: 100%;
+	padding: 60px 30px;
+	align-self: baseline;
+	margin-top: 70px;
+
+	@include breakpoint-max(1200) {
+		padding-top: 35px;
+	}
+
+	&__btn {
+		@extend %modal-btn;
+
+		svg {
+			width: 20px;
+			margin-right: 10px;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: var(--accentClr);
+			color: var(--secondaryClr);
+		}
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		column-gap: 70px;
+		flex-wrap: wrap;
+		padding: 50px 0;
+		width: 100%;
+
+		@include breakpoint-max(1200) {
+			flex-direction: column;
+			padding: 10px 0;
+		}
+	}
+
+	&__left {
+		max-width: 560px;
+		display: flex;
+		width: 100%;
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	&__right {
+		max-width: 580px;
+		width: 100%;
+		padding: 40px 0;
+		max-height: 330px;
+		align-self: end;
+
+		@include breakpoint-max(1200) {
+			align-self: center;
+		}
+	}
+
+	&__right-title {
+		margin-bottom: 20px;
+		color: var(--fontClr);
+	}
+
+	&__right-list {
+		margin-bottom: 70px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		max-height: 148px;
+
+		&-item {
+			color: var(--fontClr);
+			margin-bottom: 15px;
+		}
+	}
+
+	&__right-bottom {
+		display: flex;
+		align-items: center;
+
+		&--text {
+			color: var(--fontClr);
+		}
+
+		&-btn {
+			@extend %modal-btn;
+			margin-bottom: 0;
+		}
+
+		& * {
+			margin-right: 15px;
+		}
+	}
+}
