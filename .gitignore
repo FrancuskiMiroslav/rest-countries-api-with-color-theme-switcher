@@ -1,6 +1,5 @@
 # Dependency directories
 node_modules
-*.json
 
 ### Windows ###
 Thumbs.db
