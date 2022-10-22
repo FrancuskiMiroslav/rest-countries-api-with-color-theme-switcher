@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		toggleTheme();
 	});
 
-	const countriesUrl = 'https://restcountries.eu/rest/v2/all';
+	const countriesUrl = 'https://restcountries.com/v3.1/all';
 
 	function getCountriesData() {
 		return new Promise((resolve, reject) => {
@@ -83,32 +83,37 @@ document.addEventListener('DOMContentLoaded', function () {
 		const countriesContainer = document.getElementById('countriesContainer');
 		const countriesList = await getCountriesData();
 
-		countriesList.forEach((country) => {
+		countriesList.forEach(async (country) => {
 			const {
 				name,
 				population,
 				region,
 				capital,
-				flag,
-				nativeName,
+				flags,
 				subregion,
-				topLevelDomain,
-				currencies,
-				languages,
+				tld,
+				currencies = 'not available',
+				languages = 'not available',
 				borders,
-			} = country;
+			} = Object(country);
 
 			let countryEl = document.createElement('div');
+			  
+			let currencyName = await currencies[Object.getOwnPropertyNames(currencies || undefined || {})];
+			let currencySymbol = await currencies[Object.getOwnPropertyNames(currencies || undefined || {})];
+
+			let newLang = Object.entries(languages)[0];
+
 			countryEl.classList.add('box');
 			countryEl.classList.add('active');
 
 			countryEl.innerHTML = `
 						<div class="box__top">
-							<img src="${flag}" loading="lazy" alt="flag of a ${name}" />
+							<img src="${flags.svg}" loading="lazy" alt="flag of a ${name.common}" />
 						</div>
 
 						<div class="box__bottom">
-							<h3 class="box__title">${name}</h3>
+							<h3 class="box__title">${name.common}</h3>
 							<ul class="box__info-list">
 								<li class="box__info-list-item">
 									<span class="box__info-list-item--bold">Populaiton:</span>
@@ -157,16 +162,16 @@ document.addEventListener('DOMContentLoaded', function () {
 						<div class="modal__container">
 							<div class="modal__left">
 								<img
-									src="${flag}"
+									src="${flags.svg}"
 									loading="lazy"
-									alt="flag of a ${name}"
+									alt="flag of a ${name.common}"
 								/>
 							</div>
 							<div class="modal__right">
-								<h2 class="modal__right-title">${name}</h2>
+								<h2 class="modal__right-title">${name.common}</h2>
 								<ul class="modal__right-list">
 									<li class="modal__right-list-item">
-										<strong>Native Name:</strong> <span>${nativeName}</span>
+										<strong>Native Name:</strong> <span>${name.official}</span>
 									</li>
 									<li class="modal__right-list-item">
 										<strong>Population:</strong> <span>${population}</span>
@@ -181,29 +186,25 @@ document.addEventListener('DOMContentLoaded', function () {
 										<strong>Capital:</strong> <span>${capital}</span>
 									</li>
 									<li class="modal__right-list-item">
-										<strong>Top Level Domain:</strong> <span>${topLevelDomain}</span>
+										<strong>Top Level Domain:</strong> <span>${tld}</span>
 									</li>
 									<li class="modal__right-list-item">
-										<strong>Currencies:</strong> <span>${currencies.map((cur) => {
-											return cur.name;
-										})}</span>
+										<strong>Currencies:</strong> <span>${currencyName.name}, ${currencySymbol.symbol}</span>
 									</li>
 									<li class="modal__right-list-item">
-										<strong>Languages:</strong> <span>${languages.map((lang) => {
-											return lang.name;
-										})}</span>
+										<strong>Languages:</strong> <span>${newLang[0]} : ${newLang[1]}</span>
 									</li>
 								</ul>
 								<div class="modal__right-bottom">
 									<p class="modal__right-bottom--text">
 										<strong>Border countries:</strong>
 									</p>
-									${borders
+									${borders ? borders
 										.map((border) => {
 											return `<button class="modal__right-bottom-btn">${border}</button>`;
 										})
-										.join('')}
-									
+										.join('') : ''
+									}
 								</div>
 							</div>
 						</div>
